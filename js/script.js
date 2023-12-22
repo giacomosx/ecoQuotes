@@ -26,7 +26,7 @@ btnDescription.onclick = function () {
         spanPrice.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3')
         spanPrice.innerText = price.value + ' €';
         
-        let totalPrice = Number(price.value) * Number(QTY.value)
+        let totalPrice = (Number(price.value) * Number(QTY.value)).toFixed(2);
 
 
         const totalPriceContainer = document.createElement('span');
