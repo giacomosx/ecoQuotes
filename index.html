@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Preventivi</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main class="container-sm">
+        <nav class="navbar navbar-expand-xl navbar-light bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#">My App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse show" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="row mt-3">
+            <div class="col-sm-6 mb-3">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Rifiuti da ritirare
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control mb-3" id="input-description" placeholder="Descrizione...">
+                        <div class="row">
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="input-cer" placeholder="CER...">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="input-qty" placeholder="Quantità...">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="input-price" placeholder="Prezzo...">
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary" id="input-desc-btn">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Trasporti
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <input type="text" class="form-control mb-3" id="input-km" placeholder="Km...">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control mb-3" id="input-timing" placeholder="Tempistica...">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control mb-3" id="input-qty-trsp" placeholder="Quantità...">
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary" id="input-trsp-btn">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card invisible" id="cards-container">
+                    <ul class="list-group list-group-flush" id="cards-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
