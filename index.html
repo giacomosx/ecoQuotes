@@ -9,16 +9,16 @@
 </head>
 
 <body>
-    <main class="container-sm">
-        <nav class="navbar navbar-expand-xl navbar-light bg-primary">
+    <header class="bg-primary">
+        <nav class="navbar navbar-expand-xl navbar-light container-sm">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">My App</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                <a class="navbar-brand text-white" href="#">ecoQuotes</a>
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse show" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <ul class="navbar-nav me-auto text-white mb-xl-0">
                         <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
                         </li>
@@ -27,7 +27,9 @@
                 </div>
             </div>
         </nav>
-        <div class="row mt-3">
+    </header>
+    <main class="container-sm">
+        <div class="row mt-3 d-flex flex-wrap">
             <div class="col-sm-6 mb-3">
                 <div class="card mb-3">
                     <div class="card-header">
@@ -74,10 +76,12 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="card invisible" id="cards-container">
-                    <ul class="list-group list-group-flush" id="cards-list">
+                <div class="card " id="cards-container">
+                    <img src="assets/img/epmpty-box.png" class="img-fluid" alt="Empty Box" width="550" id="empty-box-img">
+                    <ul class="list-group list-group-flush invisible" id="cards-list">
                     </ul>
                 </div>
+                
             </div>
         </div>
         </div>
