@@ -17,7 +17,7 @@ WIP - Personal project to help me draw up estimates on behalf of a recycling com
 - [Demo on Vercel](https://eco-quotes-three.vercel.app/)
 
 ## Tech-Stack  
-**Frontend:** HTML,CSS3, JavaScript
+**Frontend:** HTML, Bootstrap, JavaScript
 
 ## Features  
 
