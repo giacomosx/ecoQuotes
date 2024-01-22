@@ -1,7 +1,7 @@
 # ecoQuotes 
 WIP - Personal project to help me draw up estimates on behalf of a recycling company
 
-![App Screenshot](https://raw.githubusercontent.com/giacomosx/ecoQuotes/main/screen/preview.png)
+![App Screenshot](https://github.com/giacomosx/ecoQuotes/blob/main/screen/preview.png)
 
 
 # Table of contents  
