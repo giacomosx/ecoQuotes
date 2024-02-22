@@ -166,7 +166,7 @@ btnTransports.onclick = function() {
    
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('btn', 'btn-danger')
-    deleteBtn.innerText = 'Delete';
+    deleteBtn.innerText = 'Elimina';
 
     divDesc.innerHTML = 'Trasporto verso impianto autorizzato';
 
