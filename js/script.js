@@ -13,7 +13,7 @@ let dataYear = data.getFullYear();
 
 dataContainer.innerText = dataYear;
 
-
+let totalCosts = 0;
 let totalQuotes = 0;
 
 btnDescription.onclick = function () {
@@ -28,16 +28,18 @@ btnDescription.onclick = function () {
         const CER = document.getElementById('input-cer');
         const QTY = document.getElementById('input-qty');
         const price = document.getElementById('input-price');
-
+        
+        let totalPriceIn = (Number(price.value) * Number(QTY.value)).toFixed(2);
         let priceOut = (Number(price.value) * 1.35).toFixed(2);
 
-        let totalPriceIn = (Number(price.value) * Number(QTY.value)).toFixed(2);
-        
         let totalPrice = (priceOut * Number(QTY.value)).toFixed(2);
 
+        totalCosts += Number(totalPriceIn);
         totalQuotes += Number(totalPrice);
 
+        totalCostContainer.innerText = totalCosts + ' €';
         totalQuotesContainer.innerText = totalQuotes + ' €';
+        mdcContainer.innerText = (totalQuotes - totalCosts).toFixed(2) + ' €';
 
         const divDesc = document.createElement('div');
         divDesc.classList.add('d-flex', 'justify-content-between');
@@ -52,7 +54,7 @@ btnDescription.onclick = function () {
         spanQTY.innerText = QTY.value + ' Kg';
         
         const spanPriceIn = document.createElement('span');
-        spanPriceIn.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3')
+        spanPriceIn.classList.add('badge', 'bg-warning', 'rounded-pill', 'me-3')
         spanPriceIn.innerText = Number(price.value).toFixed(2) + ' €';
         
         const spanPriceOut = document.createElement('span');
@@ -71,7 +73,7 @@ btnDescription.onclick = function () {
         deleteBtn.classList.add('btn', 'btn-danger')
 
 
-        deleteBtn.innerText = 'Delete';
+        deleteBtn.innerText = 'Elimina';
 
         divDesc.innerHTML = description.value;
 
@@ -89,8 +91,11 @@ btnDescription.onclick = function () {
 
         deleteBtn.addEventListener('click', function () {
             
+            totalCosts -= totalPriceIn;
+            totalCostContainer.innerText = totalCosts + ' €';
             totalQuotes -= totalPrice;
             totalQuotesContainer.innerText = totalQuotes + ' €';
+            mdcContainer.innerText = (totalQuotes - totalCosts).toFixed(2) + ' €';
 
             cardListElement.remove();
             
@@ -117,13 +122,21 @@ btnTransports.onclick = function() {
     let inputQTYTransp = document.getElementById('input-qty-trsp');
     
     
+    let totalTransportCost = Math.ceil(((((Number(inputKm.value) / 2.5 * fuelCost) + 
+                                (manCostPerHour * Number(inputTime.value))) * 
+                                consuptionImpact * Number(inputQTYTransp.value))));
+
     let totalTransportPrice = Math.ceil(((((Number(inputKm.value) / 2.5 * fuelCost) + 
                                 (manCostPerHour * Number(inputTime.value))) * 
                                 consuptionImpact * Number(inputQTYTransp.value))* MDC));
-    
+                                    
+
+    totalCosts += Number(totalTransportCost);
     totalQuotes += Number(totalTransportPrice);
 
+    totalCostContainer.innerText = totalCosts + ' €';
     totalQuotesContainer.innerText = totalQuotes + ' €';
+    mdcContainer.innerText = (totalQuotes - totalCosts).toFixed(2) + ' €';
 
     const divDesc = document.createElement('div');
     divDesc.classList.add('d-flex', 'justify-content-between');
@@ -139,6 +152,11 @@ btnTransports.onclick = function() {
     const spanQTYTransp = document.createElement('span');
     spanQTYTransp.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3');
     spanQTYTransp.innerText = inputQTYTransp.value + ' Viaggi previsti';
+
+    const totalCostTranspContainer = document.createElement('span');
+    totalCostTranspContainer.classList.add('badge', 'bg-warning', 'rounded-pill', 'me-3')
+    totalCostTranspContainer.innerText = 'Costo presunto: ' + totalTransportCost + ' €';
+
 
     const totalPriceTranspContainer = document.createElement('span');
     totalPriceTranspContainer.classList.add('badge', 'bg-success', 'rounded-pill', 'me-3')
@@ -157,7 +175,7 @@ btnTransports.onclick = function() {
 
     divDesc.append(deleteBtn);
 
-    divLiElement.append(divDesc, spanKm, spanTime, spanQTYTransp, totalPriceTranspContainer);
+    divLiElement.append(divDesc, spanKm, spanTime, spanQTYTransp, totalCostTranspContainer, totalPriceTranspContainer);
 
     cardListElement.append(divLiElement);
     ulCards.append(cardListElement);
@@ -168,8 +186,12 @@ btnTransports.onclick = function() {
 
     deleteBtn.addEventListener('click', function () {
         
+        totalCosts -= totalTransportCost;
+        totalCostContainer.innerText = totalCosts + ' €';
+        
         totalQuotes -= totalTransportPrice;
         totalQuotesContainer.innerText = totalQuotes + ' €';
+        mdcContainer.innerText = (totalQuotes - totalCosts).toFixed(2) + ' €';
 
         cardListElement.remove();
         
