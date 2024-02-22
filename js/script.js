@@ -4,6 +4,8 @@ const ulCards = document.getElementById('cards-list');
 const divCards = document.getElementById('cards-container');
 const emptyBoxImg = document.getElementById('empty-box-img');
 const totalQuotesContainer = document.getElementById('total-quotes-container');
+const totalCostContainer = document.getElementById('total-cost-container');
+const mdcContainer = document.getElementById('mdc-container');
 const dataContainer = document.getElementById('footer-data');
 
 let data = new Date();
@@ -23,28 +25,39 @@ btnDescription.onclick = function () {
         emptyBoxImg.remove();
         ulCards.classList.remove('invisible')
 
-        const divDesc = document.createElement('div');
-        divDesc.classList.add('d-flex', 'justify-content-between');
-
         const CER = document.getElementById('input-cer');
-        const spanCER = document.createElement('span');
-        spanCER.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3');
-        spanCER.innerText = 'CER ' + CER.value;
         const QTY = document.getElementById('input-qty');
-        const spanQTY = document.createElement('span');
-        spanQTY.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3');
-        spanQTY.innerText = QTY.value + ' Kg';
         const price = document.getElementById('input-price');
-        const spanPrice = document.createElement('span');
-        spanPrice.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3')
-        spanPrice.innerText = price.value + ' €';
+
+        let priceOut = (Number(price.value) * 1.35).toFixed(2);
+
+        let totalPriceIn = (Number(price.value) * Number(QTY.value)).toFixed(2);
         
-        let totalPrice = (Number(price.value) * Number(QTY.value)).toFixed(2);
+        let totalPrice = (priceOut * Number(QTY.value)).toFixed(2);
 
         totalQuotes += Number(totalPrice);
 
         totalQuotesContainer.innerText = totalQuotes + ' €';
 
+        const divDesc = document.createElement('div');
+        divDesc.classList.add('d-flex', 'justify-content-between');
+
+        
+        const spanCER = document.createElement('span');
+        spanCER.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3');
+        spanCER.innerText = 'CER ' + CER.value;
+        
+        const spanQTY = document.createElement('span');
+        spanQTY.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3');
+        spanQTY.innerText = QTY.value + ' Kg';
+        
+        const spanPriceIn = document.createElement('span');
+        spanPriceIn.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3')
+        spanPriceIn.innerText = Number(price.value).toFixed(2) + ' €';
+        
+        const spanPriceOut = document.createElement('span');
+        spanPriceOut.classList.add('badge', 'bg-primary', 'rounded-pill', 'me-3')
+        spanPriceOut.innerText = priceOut + ' €';
 
         const totalPriceContainer = document.createElement('span');
         totalPriceContainer.classList.add('badge', 'bg-success', 'rounded-pill', 'me-3')
@@ -64,7 +77,7 @@ btnDescription.onclick = function () {
 
         divDesc.append(deleteBtn);
 
-        divLiElement.append(divDesc, spanCER, spanQTY, spanPrice, totalPriceContainer);
+        divLiElement.append(divDesc, spanCER, spanQTY, spanPriceIn, spanPriceOut, totalPriceContainer);
 
         cardListElement.append(divLiElement);
         ulCards.append(cardListElement);
