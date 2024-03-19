@@ -72,7 +72,6 @@ btnDescription.onclick = function () {
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('btn', 'btn-danger')
 
-
         deleteBtn.innerText = 'Elimina';
 
         divDesc.innerHTML = description.value;
@@ -128,7 +127,9 @@ btnTransports.onclick = function() {
 
     let totalTransportPrice = Math.ceil(((((Number(inputKm.value) / 2.5 * fuelCost) + 
                                 (manCostPerHour * Number(inputTime.value))) * 
-                                consuptionImpact * Number(inputQTYTransp.value))* MDC));
+                                consuptionImpact * Number(inputQTYTransp.value))));
+
+    totalTransportPrice = (totalTransportPrice - totalTransportCost) < 50 ? totalTransportPrice + 50 : totalTransportPrice * MDC 
                                     
 
     totalCosts += Number(totalTransportCost);
